@@ -4,21 +4,11 @@ version = 3
 
 [[package]]
 name = "autocfg"
-version = "1.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
-
-[[package]]
-name = "bitflags"
-version = "2.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8f68f53c83ab957f72c32642f3868eec03eb974d1fb82e453128456482613d36"
+version = "1.5.0"
 
 [[package]]
 name = "cfg-if"
-version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+version = "1.0.4"
 
 [[package]]
 name = "deranged"
@@ -29,7 +19,7 @@ dependencies = [
  "powerfmt",
  "quickcheck",
  "rand 0.8.5",
- "rand 0.9.0",
+ "rand 0.9.2",
  "serde_core",
  "serde_json",
 ]
@@ -40,44 +30,42 @@ version = "0.3.0"
 
 [[package]]
 name = "getrandom"
-version = "0.2.12"
+version = "0.2.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "190092ea657667030ac6a35e305e62fc4dd69fd98ac98631e5d3a2b1575a12b5"
+checksum = "335ff9f135e4384c8150d6f27c6daed433577f86b4750418338c01a1a2528592"
 dependencies = [
  "cfg-if",
  "libc",
- "wasi 0.11.0+wasi-snapshot-preview1",
+ "wasi",
 ]
 
 [[package]]
 name = "getrandom"
-version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "43a49c392881ce6d5c3b8cb70f98717b7c07aabbdff06687b9030dbfbe2725f8"
+version = "0.3.4"
 dependencies = [
  "cfg-if",
  "libc",
- "wasi 0.13.3+wasi-0.2.2",
- "windows-targets",
+ "r-efi",
+ "wasip2",
 ]
 
 [[package]]
 name = "itoa"
-version = "1.0.10"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b1a46d1a171d865aa5f83f92695765caa047a9b4cbae2cbf37dbd613a793fd4c"
+version = "1.0.15"
 
 [[package]]
 name = "libc"
-version = "0.2.170"
+version = "0.2.177"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "875b3680cb2f8f71bdcf9a30f38d48282f5d3c95cbf9b3fa57269bb5d5c06828"
+checksum = "2874a2af47a2325c2001a6e6fad9b16a53b802102b528163885171cf92b15976"
+
+[[package]]
+name = "memchr"
+version = "2.7.6"
 
 [[package]]
 name = "num-traits"
-version = "0.2.18"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "da0df0e5185db44f69b44f26786fe401b6c293d1907744beaa7fa62b2e5a517a"
+version = "0.2.19"
 dependencies = [
  "autocfg",
 ]
@@ -90,15 +78,16 @@ checksum = "439ee305def115ba05938db6eb1644ff94165c5ab5e9420d1c1bcedbba909391"
 
 [[package]]
 name = "ppv-lite86"
-version = "0.2.17"
+version = "0.2.21"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+checksum = "85eae3c4ed2f50dcfe72643da4befc30deadb458a9b590d720cde2f2b1e97da9"
+dependencies = [
+ "zerocopy",
+]
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.101"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "89ae43fd86e4158d6db51ad8e2b80f313af9cc74f5c0e03ccb87de09998732de"
+version = "1.0.103"
 dependencies = [
  "unicode-ident",
 ]
@@ -106,20 +95,20 @@ dependencies = [
 [[package]]
 name = "quickcheck"
 version = "1.0.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "588f6378e4dd99458b60ec275b4477add41ce4fa9f64dcba6f15adccb19b50d6"
 dependencies = [
- "rand 0.8.5",
+ "rand 0.9.2",
 ]
 
 [[package]]
 name = "quote"
-version = "1.0.35"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "291ec9ab5efd934aaf503a6466c5d5251535d108ee747472c3977cc5acc868ef"
+version = "1.0.42"
 dependencies = [
  "proc-macro2",
 ]
+
+[[package]]
+name = "r-efi"
+version = "5.3.0"
 
 [[package]]
 name = "rand"
@@ -134,13 +123,12 @@ dependencies = [
 
 [[package]]
 name = "rand"
-version = "0.9.0"
+version = "0.9.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3779b94aeb87e8bd4e834cee3650289ee9e0d5677f976ecdb6d219e5f4f6cd94"
+checksum = "6db2770f06117d490610c7488547d543617b21bfa07796d7a12f6f1bd53850d1"
 dependencies = [
  "rand_chacha 0.9.0",
- "rand_core 0.9.2",
- "zerocopy",
+ "rand_core 0.9.3",
 ]
 
 [[package]]
@@ -160,7 +148,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d3022b5f1df60f26e1ffddd6c66e8aa15de382ae63b3a0c1bfc0e4d3e3f325cb"
 dependencies = [
  "ppv-lite86",
- "rand_core 0.9.2",
+ "rand_core 0.9.3",
 ]
 
 [[package]]
@@ -169,48 +157,45 @@ version = "0.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
 dependencies = [
- "getrandom 0.2.12",
+ "getrandom 0.2.16",
 ]
 
 [[package]]
 name = "rand_core"
-version = "0.9.2"
+version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a509b1a2ffbe92afab0e55c8fd99dea1c280e8171bd2d88682bb20bc41cbc2c"
+checksum = "99d9a13982dcf210057a8a78572b2217b667c3beacbf3a0d8b454f6f82837d38"
 dependencies = [
- "getrandom 0.3.1",
- "zerocopy",
+ "getrandom 0.3.4",
 ]
 
 [[package]]
 name = "ryu"
-version = "1.0.17"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e86697c916019a8588c99b5fac3cead74ec0b4b819707a682fd4d23fa0ce1ba1"
+version = "1.0.20"
 
 [[package]]
 name = "serde"
-version = "1.0.226"
+version = "1.0.228"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0dca6411025b24b60bfa7ec1fe1f8e710ac09782dca409ee8237ba74b51295fd"
+checksum = "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
 dependencies = [
  "serde_core",
 ]
 
 [[package]]
 name = "serde_core"
-version = "1.0.226"
+version = "1.0.228"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ba2ba63999edb9dac981fb34b3e5c0d111a69b0924e253ed29d83f7c99e966a4"
+checksum = "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad"
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
 name = "serde_derive"
-version = "1.0.226"
+version = "1.0.228"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8db53ae22f34573731bafa1db20f04027b2d25e02d8205921b569171699cdb33"
+checksum = "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -219,20 +204,20 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.114"
+version = "1.0.145"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c5f09b1bd632ef549eaa9f60a1f8de742bdbc698e6cee2095fc84dde5f549ae0"
+checksum = "402a6f66d8c709116cf22f558eab210f5a50187f702eb4d7e5ef38d9a7f1c79c"
 dependencies = [
  "itoa",
+ "memchr",
  "ryu",
  "serde",
+ "serde_core",
 ]
 
 [[package]]
 name = "syn"
-version = "2.0.106"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ede7c438028d4436d71104916910f5bb611972c5cfd7f89b8300a8186e6fada6"
+version = "2.0.110"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -241,114 +226,581 @@ dependencies = [
 
 [[package]]
 name = "unicode-ident"
-version = "1.0.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
+version = "1.0.22"
 
 [[package]]
 name = "wasi"
-version = "0.11.0+wasi-snapshot-preview1"
+version = "0.11.1+wasi-snapshot-preview1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+checksum = "ccf3ec651a847eb01de73ccad15eb7d99f80485de043efb2f370cd654f4ea44b"
 
 [[package]]
-name = "wasi"
-version = "0.13.3+wasi-0.2.2"
+name = "wasip2"
+version = "1.0.1+wasi-0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "26816d2e1a4a36a2940b96c5296ce403917633dff8f3440e9b236ed6f6bacad2"
+checksum = "0562428422c63773dad2c345a1882263bbf4d65cf3f42e90921f787ef5ad58e7"
 dependencies = [
- "wit-bindgen-rt",
+ "wit-bindgen",
 ]
 
 [[package]]
-name = "windows-targets"
-version = "0.52.6"
+name = "wit-bindgen"
+version = "0.46.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9b724f72796e036ab90c1021d4780d4d3d648aca59e491e6b98e725b84e99973"
-dependencies = [
- "windows_aarch64_gnullvm",
- "windows_aarch64_msvc",
- "windows_i686_gnu",
- "windows_i686_gnullvm",
- "windows_i686_msvc",
- "windows_x86_64_gnu",
- "windows_x86_64_gnullvm",
- "windows_x86_64_msvc",
-]
-
-[[package]]
-name = "windows_aarch64_gnullvm"
-version = "0.52.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "32a4622180e7a0ec044bb555404c800bc9fd9ec262ec147edd5989ccd0c02cd3"
-
-[[package]]
-name = "windows_aarch64_msvc"
-version = "0.52.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "09ec2a7bb152e2252b53fa7803150007879548bc709c039df7627cabbd05d469"
-
-[[package]]
-name = "windows_i686_gnu"
-version = "0.52.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8e9b5ad5ab802e97eb8e295ac6720e509ee4c243f69d781394014ebfe8bbfa0b"
-
-[[package]]
-name = "windows_i686_gnullvm"
-version = "0.52.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0eee52d38c090b3caa76c563b86c3a4bd71ef1a819287c19d586d7334ae8ed66"
-
-[[package]]
-name = "windows_i686_msvc"
-version = "0.52.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "240948bc05c5e7c6dabba28bf89d89ffce3e303022809e73deaefe4f6ec56c66"
-
-[[package]]
-name = "windows_x86_64_gnu"
-version = "0.52.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "147a5c80aabfbf0c7d901cb5895d1de30ef2907eb21fbbab29ca94c5b08b1a78"
-
-[[package]]
-name = "windows_x86_64_gnullvm"
-version = "0.52.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "24d5b23dc417412679681396f2b49f3de8c1473deb516bd34410872eff51ed0d"
-
-[[package]]
-name = "windows_x86_64_msvc"
-version = "0.52.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec"
-
-[[package]]
-name = "wit-bindgen-rt"
-version = "0.33.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3268f3d866458b787f390cf61f4bbb563b922d091359f9608842999eaee3943c"
-dependencies = [
- "bitflags",
-]
+checksum = "f17a85883d4e6d00e8a97c586de764dabcc06133f7f1d55dce5cdc070ad7fe59"
 
 [[package]]
 name = "zerocopy"
-version = "0.8.20"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dde3bb8c68a8f3f1ed4ac9221aad6b10cece3e60a8e2ea54a6a2dec806d0084c"
+version = "0.8.27"
 dependencies = [
  "zerocopy-derive",
 ]
 
 [[package]]
 name = "zerocopy-derive"
-version = "0.8.20"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eea57037071898bf96a6da35fd626f4f27e9cee3ead2a6c703cf09d472b2e700"
+version = "0.8.27"
 dependencies = [
  "proc-macro2",
  "quote",
  "syn",
 ]
+
+[[patch.unused]]
+name = "heapless"
+version = "0.9.2"
+
+[[patch.unused]]
+name = "hashbrown"
+version = "0.16.0"
+
+[[patch.unused]]
+name = "dashmap"
+version = "7.0.0-rc2"
+
+[[patch.unused]]
+name = "time"
+version = "0.3.44"
+
+[[patch.unused]]
+name = "time-core"
+version = "0.1.6"
+
+[[patch.unused]]
+name = "time-macros"
+version = "0.2.24"
+
+[[patch.unused]]
+name = "faster-hex"
+version = "0.10.0"
+
+[[patch.unused]]
+name = "rust-ini"
+version = "0.21.3"
+
+[[patch.unused]]
+name = "ron"
+version = "0.11.0"
+
+[[patch.unused]]
+name = "dlv-list"
+version = "0.6.0"
+
+[[patch.unused]]
+name = "base64"
+version = "0.22.1"
+
+[[patch.unused]]
+name = "allocator-api2"
+version = "0.3.1"
+
+[[patch.unused]]
+name = "config"
+version = "0.15.18"
+
+[[patch.unused]]
+name = "addr2line"
+version = "0.25.1"
+
+[[patch.unused]]
+name = "adler2"
+version = "2.0.1"
+
+[[patch.unused]]
+name = "aho-corasick"
+version = "1.1.4"
+
+[[patch.unused]]
+name = "android_system_properties"
+version = "0.1.5"
+
+[[patch.unused]]
+name = "anyhow"
+version = "1.0.100"
+
+[[patch.unused]]
+name = "arc-swap"
+version = "1.7.1"
+
+[[patch.unused]]
+name = "arraydeque"
+version = "0.5.1"
+
+[[patch.unused]]
+name = "arrayref"
+version = "0.3.9"
+
+[[patch.unused]]
+name = "arrayvec"
+version = "0.7.6"
+
+[[patch.unused]]
+name = "async-trait"
+version = "0.1.89"
+
+[[patch.unused]]
+name = "backtrace"
+version = "0.3.76"
+
+[[patch.unused]]
+name = "bitflags"
+version = "2.10.0"
+
+[[patch.unused]]
+name = "bstr"
+version = "1.12.1"
+
+[[patch.unused]]
+name = "bumpalo"
+version = "3.19.0"
+
+[[patch.unused]]
+name = "byteorder"
+version = "1.5.0"
+
+[[patch.unused]]
+name = "bytes"
+version = "1.11.0"
+
+[[patch.unused]]
+name = "cc"
+version = "1.2.46"
+
+[[patch.unused]]
+name = "cfg_aliases"
+version = "0.2.1"
+
+[[patch.unused]]
+name = "clap"
+version = "4.5.51"
+
+[[patch.unused]]
+name = "clru"
+version = "0.6.2"
+
+[[patch.unused]]
+name = "colorify"
+version = "0.2.3"
+
+[[patch.unused]]
+name = "crc32fast"
+version = "1.5.0"
+
+[[patch.unused]]
+name = "crunchy"
+version = "0.2.4"
+
+[[patch.unused]]
+name = "ct-codecs"
+version = "1.1.6"
+
+[[patch.unused]]
+name = "displaydoc"
+version = "0.2.5"
+
+[[patch.unused]]
+name = "ed25519-compact"
+version = "2.1.1"
+
+[[patch.unused]]
+name = "either"
+version = "1.15.0"
+
+[[patch.unused]]
+name = "encoding_rs"
+version = "0.8.35"
+
+[[patch.unused]]
+name = "equivalent"
+version = "1.0.2"
+
+[[patch.unused]]
+name = "erased-serde"
+version = "0.4.9"
+
+[[patch.unused]]
+name = "errno"
+version = "0.3.14"
+
+[[patch.unused]]
+name = "fallible-iterator"
+version = "0.3.0"
+
+[[patch.unused]]
+name = "fallible-streaming-iterator"
+version = "0.1.9"
+
+[[patch.unused]]
+name = "fastrand"
+version = "2.3.0"
+
+[[patch.unused]]
+name = "ff"
+version = "0.13.1"
+
+[[patch.unused]]
+name = "filetime"
+version = "0.2.26"
+
+[[patch.unused]]
+name = "flate2"
+version = "1.1.5"
+
+[[patch.unused]]
+name = "fnv"
+version = "1.0.7"
+
+[[patch.unused]]
+name = "foldhash"
+version = "0.2.0"
+
+[[patch.unused]]
+name = "gimli"
+version = "0.32.3"
+
+[[patch.unused]]
+name = "glob"
+version = "0.3.3"
+
+[[patch.unused]]
+name = "globwalk"
+version = "0.9.1"
+
+[[patch.unused]]
+name = "group"
+version = "0.13.0"
+
+[[patch.unused]]
+name = "heck"
+version = "0.5.0"
+
+[[patch.unused]]
+name = "hex"
+version = "0.4.3"
+
+[[patch.unused]]
+name = "http-auth"
+version = "0.1.10"
+
+[[patch.unused]]
+name = "idna_adapter"
+version = "1.2.1"
+
+[[patch.unused]]
+name = "indexmap"
+version = "2.12.0"
+
+[[patch.unused]]
+name = "is_executable"
+version = "1.0.5"
+
+[[patch.unused]]
+name = "is_terminal_polyfill"
+version = "1.70.2"
+
+[[patch.unused]]
+name = "jiff"
+version = "0.2.16"
+
+[[patch.unused]]
+name = "jobserver"
+version = "0.1.34"
+
+[[patch.unused]]
+name = "json5"
+version = "0.4.1"
+
+[[patch.unused]]
+name = "kstring"
+version = "2.0.2"
+
+[[patch.unused]]
+name = "lazycell"
+version = "1.3.0"
+
+[[patch.unused]]
+name = "libz-sys"
+version = "1.1.23"
+
+[[patch.unused]]
+name = "log"
+version = "0.4.28"
+
+[[patch.unused]]
+name = "matchers"
+version = "0.2.0"
+
+[[patch.unused]]
+name = "maybe-async"
+version = "0.2.10"
+
+[[patch.unused]]
+name = "memmap2"
+version = "0.9.9"
+
+[[patch.unused]]
+name = "minimal-lexical"
+version = "0.2.1"
+
+[[patch.unused]]
+name = "miow"
+version = "0.6.1"
+
+[[patch.unused]]
+name = "normpath"
+version = "1.5.0"
+
+[[patch.unused]]
+name = "nu-ansi-term"
+version = "0.50.3"
+
+[[patch.unused]]
+name = "num_threads"
+version = "0.1.7"
+
+[[patch.unused]]
+name = "object"
+version = "0.37.3"
+
+[[patch.unused]]
+name = "once_cell"
+version = "1.21.3"
+
+[[patch.unused]]
+name = "once_cell_polyfill"
+version = "1.56.1"
+
+[[patch.unused]]
+name = "openssl-probe"
+version = "0.1.6"
+
+[[patch.unused]]
+name = "orion"
+version = "0.17.11"
+
+[[patch.unused]]
+name = "parking_lot"
+version = "0.12.5"
+
+[[patch.unused]]
+name = "pasetors"
+version = "0.7.7"
+
+[[patch.unused]]
+name = "pathdiff"
+version = "0.2.3"
+
+[[patch.unused]]
+name = "pin-project-lite"
+version = "0.2.16"
+
+[[patch.unused]]
+name = "pkg-config"
+version = "0.3.32"
+
+[[patch.unused]]
+name = "portable-atomic"
+version = "1.11.1"
+
+[[patch.unused]]
+name = "regex"
+version = "1.12.2"
+
+[[patch.unused]]
+name = "rustc-demangle"
+version = "0.1.26"
+
+[[patch.unused]]
+name = "rustc-hash"
+version = "2.1.1"
+
+[[patch.unused]]
+name = "rustc-stable-hash"
+version = "0.1.2"
+
+[[patch.unused]]
+name = "rustix"
+version = "1.1.2"
+
+[[patch.unused]]
+name = "rustversion"
+version = "1.0.22"
+
+[[patch.unused]]
+name = "same-file"
+version = "1.0.6"
+
+[[patch.unused]]
+name = "schannel"
+version = "0.1.28"
+
+[[patch.unused]]
+name = "scopeguard"
+version = "1.2.0"
+
+[[patch.unused]]
+name = "semver"
+version = "1.0.27"
+
+[[patch.unused]]
+name = "serde-untagged"
+version = "0.1.9"
+
+[[patch.unused]]
+name = "serde-value"
+version = "0.7.0"
+
+[[patch.unused]]
+name = "sharded-slab"
+version = "0.1.7"
+
+[[patch.unused]]
+name = "shell-escape"
+version = "0.1.5"
+
+[[patch.unused]]
+name = "shell-words"
+version = "1.1.0"
+
+[[patch.unused]]
+name = "shlex"
+version = "1.3.0"
+
+[[patch.unused]]
+name = "simd-adler32"
+version = "0.3.7"
+
+[[patch.unused]]
+name = "stable_deref_trait"
+version = "1.2.1"
+
+[[patch.unused]]
+name = "strsim"
+version = "0.11.1"
+
+[[patch.unused]]
+name = "subtle"
+version = "2.6.0"
+
+[[patch.unused]]
+name = "supports-hyperlinks"
+version = "3.1.0"
+
+[[patch.unused]]
+name = "supports-unicode"
+version = "3.0.0"
+
+[[patch.unused]]
+name = "synstructure"
+version = "0.13.2"
+
+[[patch.unused]]
+name = "tar"
+version = "0.4.44"
+
+[[patch.unused]]
+name = "tempfile"
+version = "3.23.0"
+
+[[patch.unused]]
+name = "tera"
+version = "1.20.1"
+
+[[patch.unused]]
+name = "thiserror"
+version = "2.0.17"
+
+[[patch.unused]]
+name = "thread_local"
+version = "1.1.9"
+
+[[patch.unused]]
+name = "tiny-keccak"
+version = "2.0.2"
+
+[[patch.unused]]
+name = "tinyvec"
+version = "1.10.0"
+
+[[patch.unused]]
+name = "tinyvec_macros"
+version = "0.1.1"
+
+[[patch.unused]]
+name = "typeid"
+version = "1.0.3"
+
+[[patch.unused]]
+name = "typenum"
+version = "1.19.0"
+
+[[patch.unused]]
+name = "unicase"
+version = "2.8.1"
+
+[[patch.unused]]
+name = "unicode-normalization"
+version = "0.1.25"
+
+[[patch.unused]]
+name = "unicode-segmentation"
+version = "1.12.0"
+
+[[patch.unused]]
+name = "unicode-xid"
+version = "0.2.6"
+
+[[patch.unused]]
+name = "utf8_iter"
+version = "1.0.4"
+
+[[patch.unused]]
+name = "vcpkg"
+version = "0.2.15"
+
+[[patch.unused]]
+name = "version_check"
+version = "0.9.5"
+
+[[patch.unused]]
+name = "walkdir"
+version = "2.5.0"
+
+[[patch.unused]]
+name = "wasm-bindgen"
+version = "0.2.105"
+
+[[patch.unused]]
+name = "winapi-util"
+version = "0.1.11"
+
+[[patch.unused]]
+name = "winnow"
+version = "0.7.13"
+
+[[patch.unused]]
+name = "yaml-rust2"
+version = "0.10.4"
+
+[[patch.unused]]
+name = "ordered-multimap"
+version = "0.7.4"
