@@ -3,11 +3,11 @@
 #members = ["deranged", "deranged-macros"]
 #resolver = "2"
 
-[profile.dev]
-debug = 0
+# [profile.dev]
+# debug = 0
 
-[profile.test]
-debug = 2
+# [profile.test]
+# debug = 2
 
 # [workspace.dependencies]
 # deranged-macros = { version = "=0.3.0", path = "deranged-macros" }
